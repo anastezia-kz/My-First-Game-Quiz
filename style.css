@@ -1,0 +1,98 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+:root {
+    --hue-neutral: 60;
+    --hue-wrong: 0;
+    --hue-correct: 155;
+}
+
+body{
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 90%, 60%);
+}
+body.correct {
+    --hue: var(--hue-correct);
+}
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-top: 20px;
+}     
+
+.quiz:first-child{
+    padding-bottom: 50px;
+ 
+}
+
+.title {
+    margin-bottom: 40px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin:  20px 0;
+
+}
+
+.btn{
+    --hue:var(--hue-neutral);
+    border: 3px solid hsl(270, 60%, 40%);
+    background-color: hsl(270, 60%, 70%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+    --hue:var(--hue-correct);
+}
+.btn.wrong {
+    --hue:var(--hue-wrong);
+}
+
+.start-btn, .next-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.hide {
+    display: none;
+}
