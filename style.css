@@ -18,7 +18,7 @@ body{
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 90%, 60%);
+    background-image:url("https://www.fonewalls.com/wp-content/uploads/2560x1600-Background-HD-Wallpaper-238.jpg");
 }
 body.correct {
     --hue: var(--hue-correct);
@@ -28,8 +28,10 @@ body.wrong {
 }
 
 .container {
+   
     width: 800px;
     max-width: 80%;
+    height: 550px;
     background-color: whitesmoke;
     border-radius: 5px;
     padding: 10px;
@@ -43,13 +45,23 @@ body.wrong {
     margin-top: 20px;
 }     
 
-.quiz:first-child{
-    padding-bottom: 50px;
- 
-}
 
 .title {
     margin-bottom: 40px;
+    margin-left: 35%;
+    font-family: cursive;
+    font-size: 4em;
+
+}
+#question-container>span{
+    font-family: cursive;
+    font-size: x-large;
+}
+
+
+#question{
+    display: flex;
+    justify-content: center;
 }
 
 .btn-grid {
@@ -57,16 +69,16 @@ body.wrong {
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin:  20px 0;
-
+    
 }
 
 .btn{
     --hue:var(--hue-neutral);
     border: 3px solid hsl(270, 60%, 40%);
-    background-color: hsl(270, 60%, 70%);
+    background-color: hsl(var(--hue), 60%, 70%);
     border-radius: 5px;
     padding: 5px 10px;
-    color: white;
+    color: black;
     outline: none;
 }
 
@@ -76,6 +88,7 @@ body.wrong {
 
 .btn.correct {
     --hue:var(--hue-correct);
+    color: black;
 }
 .btn.wrong {
     --hue:var(--hue-wrong);
@@ -85,6 +98,7 @@ body.wrong {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
+    /* margin-top: 35%; */
 }
 
 .controls{
