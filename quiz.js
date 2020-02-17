@@ -10,6 +10,7 @@ class Quiz {
         this.questionElement = document.getElementById("question")
         this.answerButtons = document.getElementById("answer-btns")
         this.score = document.getElementById("score")
+        this.finishGIF = document.getElementById("finish-gif")
         this.addListener()
         this.numCorrect = 0
     }
@@ -20,6 +21,8 @@ class Quiz {
         this.goButton.classList.add("hide")
         this.shuffeledQuestions = this.questions.sort(() => Math.random() - .5)
         this.questionContainer.classList.remove("hide")
+        this.score.classList.add("hide")
+        this.finishGIF.classList.add("hide")
         this.setNextQuestion()
     }
 
@@ -48,6 +51,9 @@ class Quiz {
         }else {
             this.goButton.innerText = "Restart"
             this.goButton.classList.remove("hide")
+            this.questionContainer.classList.add("hide")
+            this.score.classList.remove("hide")
+            this.finishGIF.classList.remove("hide")
             this.showResult();
         }
     }
@@ -68,12 +74,12 @@ class Quiz {
             imageQuestion.classList.add("image")
             imageQuestion.src = question.questionURL
         }else if(question.type === "text"){
-            theQuestion.innerHTML = ""
+            
             let textQuestion = document.createElement("p")
             theQuestion.appendChild(textQuestion)
             textQuestion.innerText = question.question
         }else if(question.type === "sound"){
-            theQuestion.innerHTML = ""
+            
             let soundQuestion = document.createElement("audio")
             soundQuestion.setAttribute("src","questionSRC")
             soundQuestion.setAttribute("controls", "controls")
@@ -150,7 +156,7 @@ const questions = [
             {text:"Titanic", correct: false}
         ]
     },
-    /* {
+    {
         questionURL:"./pictures/run Forest.jpg",
         type: "img",
         answers: [
@@ -279,7 +285,7 @@ const questions = [
             {text:"Coco", correct: false},
             {text:"Casablanca", correct:false}
         ]
-    }    */
+    }   
 ];
 
 
