@@ -73,13 +73,11 @@ audio{
 }
 
 #question-container{
-    position: relative;
     width: 100%;
 }
 #answer-btns{
     width: 100%;
-    position: absolute;
-    top:400px
+
 }
 #question-container>span{
     font-family: cursive;
@@ -90,6 +88,7 @@ audio{
 #question{
     display: flex;
     justify-content: center;
+    height: 350px;
 }
 
 .btn-grid {
@@ -108,6 +107,7 @@ audio{
     padding: 5px 10px;
     color: black;
     outline: none;
+    font-size: large;
 }
 
 .btn:hover {
@@ -133,10 +133,6 @@ audio{
     top: 50%;
     left: 50%;
     transform: translate(-50%, 50%)
-}
-#next-btn{
-    position: absolute;
-    top: 650px;
 }
 
 #score{
