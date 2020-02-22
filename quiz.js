@@ -69,7 +69,7 @@ class Quiz {
 
     showResult(){
     
-        this.score.innerHTML = `${this.name}, you answered ${this.numCorrect} out of ${this.questions.length} questions.`
+        this.score.innerHTML = `${this.name} you answered ${this.numCorrect} out of ${this.questions.length} questions.`
         
     }
 

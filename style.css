@@ -146,7 +146,6 @@ audio{
 #player>label{
     font-size: 25px;
     font-family: 'Satisfy', cursive;
-    
 }
 #player{
     padding-top: 40px;
@@ -164,7 +163,6 @@ audio{
      display: flex;
      justify-content: center;
      align-items: center;
-    
 }
 
 .hide {
@@ -172,3 +170,34 @@ audio{
 }
 
 
+@media (max-width: 450px){
+   .container{ 
+       width: 100%;
+       height: 450px;
+   }
+   .btn{
+    font-size: x-small;
+   }
+   .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 10px;
+    margin: 20px 0;
+    
+    }
+    #question{
+    height: 150px;
+    }
+    #finish-gif>img{
+        height: 180px;
+        padding-top: 10px;
+    }
+    #score{
+        border-radius: 5px;
+        border: 3px solid hsl(270, 60%, 40%);
+        margin-top: 20%;
+        padding: 5px 10px;
+        font-size: 25px;
+        font-family: cursive;
+    }
+}
