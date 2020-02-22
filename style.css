@@ -143,6 +143,14 @@ audio{
     font-size: 25px;
     font-family: cursive;
 }
+#player>label{
+    font-size: 25px;
+    font-family: 'Satisfy', cursive;
+    
+}
+#player{
+    padding-top: 40px;
+}
 
 #finish-gif{
     align-items: center;

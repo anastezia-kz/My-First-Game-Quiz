@@ -11,16 +11,25 @@ class Quiz {
         this.answerButtons = document.getElementById("answer-btns")
         this.score = document.getElementById("score")
         this.finishGIF = document.getElementById("finish-gif")
+        this.player = document.querySelector("#player")
+
+        this.nameInput = document.querySelector("#player input") 
+
+        this.name = ""
+        this.player.classList.remove("hide")
         this.addListener()
         this.numCorrect = 0
     }
 
     startGame(e){
         console.log('start');
+        this.name = this.nameInput.value
+        console.log(this.name)
         this.currentQuestionIndex = 0;
         this.goButton.classList.add("hide")
         this.shuffeledQuestions = this.questions.sort(() => Math.random() - .5)
         this.questionContainer.classList.remove("hide")
+        this.player.classList.add("hide")
         this.score.classList.add("hide")
         this.finishGIF.classList.add("hide")
         this.setNextQuestion()
@@ -60,7 +69,7 @@ class Quiz {
 
     showResult(){
     
-        this.score.innerHTML = `${this.numCorrect} out of ${this.questions.length}`
+        this.score.innerHTML = `${this.name}, you answered ${this.numCorrect} out of ${this.questions.length} questions.`
         
     }
 
@@ -156,16 +165,16 @@ const questions = [
             {text:"Titanic", correct: false}
         ]
     },
-    {
-        questionURL:"./pictures/run Forest.jpg",
-        type: "img",
-        answers: [
-            {text:"Forrest Gump", correct: true},
-            {text:"Big", correct: false},
-            {text:"Cast Away", correct: false},
-            {text:"Saving Private Ryan", correct: false},
-        ]
-    },
+    // {
+    //     questionURL:"./pictures/run Forest.jpg",
+    //     type: "img",
+    //     answers: [
+    //         {text:"Forrest Gump", correct: true},
+    //         {text:"Big", correct: false},
+    //         {text:"Cast Away", correct: false},
+    //         {text:"Saving Private Ryan", correct: false},
+    //     ]
+    // },
     {
         questionURL:"./pictures/the shining.jpg",
         type: "img",
@@ -206,16 +215,16 @@ const questions = [
             {text:"28 Weeks Later", correct: false},
         ]
     },
-    {
-        question:`“May the Force be with you.”`,
-        type: "text",
-        answers: [
-            {text:"the Gladiator", correct: false},
-            {text:"Star Wars", correct: true},
-            {text:"Star Treck", correct: false},
-            {text:"Train to Busan", correct: false},
-        ]
-    },
+    // {
+    //     question:`“May the Force be with you.”`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"the Gladiator", correct: false},
+    //         {text:"Star Wars", correct: true},
+    //         {text:"Star Treck", correct: false},
+    //         {text:"Train to Busan", correct: false},
+    //     ]
+    // },
     {
         question:` "I'm having an old friend for dinner."`,
         type: "text",
@@ -236,16 +245,16 @@ const questions = [
             {text:"Up in the Air", correct: false},
         ]
     },
-    {
-        question:`"Frankly, my dear, I don't give a damn."`,
-        type: "text",
-        answers: [
-            {text:"Gone With the Wind", correct: true},
-            {text:"The Godfather, Part I", correct: false},
-            {text:"Scarface", correct: false},
-            {text:"Sherlock Holmes", correct: false},
-        ]
-    },
+    // {
+    //     question:`"Frankly, my dear, I don't give a damn."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"Gone With the Wind", correct: true},
+    //         {text:"The Godfather, Part I", correct: false},
+    //         {text:"Scarface", correct: false},
+    //         {text:"Sherlock Holmes", correct: false},
+    //     ]
+    // },
     {
         questionSRC:"./sondtrack/jamesbond.mp3",
         type: "sound",
@@ -256,26 +265,26 @@ const questions = [
             {text:"Mission:Impossible", correct:false}
         ]
     },
-    {
-        questionSRC:"./sondtrack/piratesofthecaribbean.mp3",
-        type: "sound",
-        answers:[
-            {text:"Pirates of the Caribbean", correct: true},
-            {text: "The Game of Thrones", correct: false},
-            {text:"Dunkirk", correct: false},
-            {text:"Arrival", correct:false}
-        ]
-    },
-    {
-        questionSRC:"./sondtrack/titanic.mp3",
-        type: "sound",
-        answers:[
-            {text: "Logan", correct: false},
-            {text:"Argo", correct: false},
-            {text:"The Titanic", correct: true},
-            {text:"La La Land", correct:false}
-        ]
-    },
+    // {
+    //     questionSRC:"./sondtrack/piratesofthecaribbean.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text:"Pirates of the Caribbean", correct: true},
+    //         {text: "The Game of Thrones", correct: false},
+    //         {text:"Dunkirk", correct: false},
+    //         {text:"Arrival", correct:false}
+    //     ]
+    // },
+    // {
+    //     questionSRC:"./sondtrack/titanic.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text: "Logan", correct: false},
+    //         {text:"Argo", correct: false},
+    //         {text:"The Titanic", correct: true},
+    //         {text:"La La Land", correct:false}
+    //     ]
+    // },
     {
         questionSRC:"./sondtrack/XFiles.mp3",
         type: "sound",
