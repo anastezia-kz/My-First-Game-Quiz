@@ -11,6 +11,7 @@ class Quiz {
         this.answerButtons = document.getElementById("answer-btns")
         this.score = document.getElementById("score")
         this.finishGIF = document.getElementById("finish-gif")
+        this.player = document.getElementById("player")
         this.addListener()
         this.numCorrect = 0
     }
@@ -20,17 +21,36 @@ class Quiz {
         this.currentQuestionIndex = 0;
         this.goButton.classList.add("hide")
         this.shuffeledQuestions = this.questions.sort(() => Math.random() - .5)
-        this.questionContainer.classList.remove("hide")
-        this.score.classList.add("hide")
-        this.finishGIF.classList.add("hide")
+        // this.questionContainer.classList.remove("hide")
+        // this.score.classList.add("hide")
+        // this.player.classList.remove("hide")
+        // this.finishGIF.classList.add("hide")
         this.setNextQuestion()
+      
     }
 
     setNextQuestion(){
         console.log('next', this.currentQuestionIndex);
         this.resetState()
+        
         this.showQuestion(this.shuffeledQuestions[this.currentQuestionIndex])
+       
+      
+
     }
+
+    // stopTimer(){
+    //     if( this.shuffeledQuestions.length-1 === this.currentQuestionIndex){
+    //         this.goButton.innerText = "Restart"
+    //         this.goButton.classList.remove("hide")
+    //         this.questionContainer.classList.add("hide")
+    //         this.score.classList.remove("hide")
+    //         this.finishGIF.classList.remove("hide")
+            
+    //         clearInterval(this.timer)
+    //         this.showResult();
+    //     }else{this.currentQuestionIndex++}
+    // }
 
     selectAnswer(e){
         
@@ -49,11 +69,13 @@ class Quiz {
         if(this.shuffeledQuestions.length > this.currentQuestionIndex+1) {
             this.nextButton.classList.remove("hide")
         }else {
+            console.log("hi");
             this.goButton.innerText = "Restart"
             this.goButton.classList.remove("hide")
             this.questionContainer.classList.add("hide")
             this.score.classList.remove("hide")
             this.finishGIF.classList.remove("hide")
+            // this.player.classList.remove("hide")
             this.showResult();
         }
     }
@@ -126,14 +148,41 @@ class Quiz {
 
     addListener(){
 
-        this.goButton.addEventListener('click', e =>this.startGame(e) )
+        this.goButton.addEventListener('click', e => this.startGame(e) )
         this.nextButton.addEventListener('click', () => {
-            this.currentQuestionIndex++
+            
             this.setNextQuestion()
+            
         })
     }
 
+    // countDown(i) {
+
+    //     // callback = callback || function(){};
+    //     this.timer = setInterval(() => {
+    //         document.getElementById("timer").innerHTML = "You have " + i;
+    //         console.log(i)
+    //         i-- || (clearInterval(this.timer), this.setNextQuestion());
+            
+    //     }, 1000);
+    //     // this.goButton.click(()=>{
+    //     //     this.countDown(10,()=>{
+    //     //         this.setNextQuestion()
+    //     //     })
+    //     // })
+    //     // this.nextButton.click(()=>{
+    //     //     this.countDown(10,()=>{
+    //     //         clearInterval(this.timer)
+    //     //         this.setNextQuestion()
+    //     //     })
+    //     // })
+
+    // };
+    
+ 
+
 }
+
 
 const questions = [
     {
@@ -176,117 +225,118 @@ const questions = [
             {text:"A Nightmare on Elm Street", correct: false},
         ]
     },
-    {
-        question:`"Hasta la vista, baby."`,
-        type: "text",
-        answers: [
-            {text:"The Godfather", correct: false},
-            {text:"Instructions Not Included", correct: false},
-            {text:"Terminator 2: Judgment Day", correct: true},
-            {text:"The Fast and the Furious", correct: false},
-        ]
-    },
-    {
-        question:`"Houston, we have a problem."`,
-        type: "text",
-        answers: [
-            {text:"Ad Astra", correct: false},
-            {text:" Apollo 13", correct: true},
-            {text:"Interstellar", correct: false},
-            {text:"The Martian", correct: false},
-        ]
-    },
-    {
-        question:`“It's alive! It's alive!”`,
-        type: "text",
-        answers: [
-            {text:"Van Helsing", correct: false},
-            {text:"Frankenstein", correct: true},
-            {text:"Zombieland", correct: false},
-            {text:"28 Weeks Later", correct: false},
-        ]
-    },
-    {
-        question:`“May the Force be with you.”`,
-        type: "text",
-        answers: [
-            {text:"the Gladiator", correct: false},
-            {text:"Star Wars", correct: true},
-            {text:"Star Treck", correct: false},
-            {text:"Train to Busan", correct: false},
-        ]
-    },
-    {
-        question:` "I'm having an old friend for dinner."`,
-        type: "text",
-        answers: [
-            {text:"The Silence of the Lambs", correct: true},
-            {text:"Gravity", correct: false},
-            {text:"Birdman", correct: false},
-            {text:"Into the Woods", correct: false},
-        ]
-    },
-    {
-        question:`"Keep your friends close, but your enemies closer."`,
-        type: "text",
-        answers: [
-            {text:"The Godfather, Part II", correct: true},
-            {text:"The Godfather, Part I", correct: false},
-            {text:"Inglourious Basterds", correct: false},
-            {text:"Up in the Air", correct: false},
-        ]
-    },
-    {
-        question:`"Frankly, my dear, I don't give a damn."`,
-        type: "text",
-        answers: [
-            {text:"Gone With the Wind", correct: true},
-            {text:"The Godfather, Part I", correct: false},
-            {text:"Scarface", correct: false},
-            {text:"Sherlock Holmes", correct: false},
-        ]
-    },
-    {
-        questionSRC:"./sondtrack/jamesbond.mp3",
-        type: "sound",
-        answers:[
-            {text:"James Bond", correct: true},
-            {text:"A Star is Born", correct: false},
-            {text:"Knives Out", correct: false},
-            {text:"Mission:Impossible", correct:false}
-        ]
-    },
-    {
-        questionSRC:"./sondtrack/piratesofthecaribbean.mp3",
-        type: "sound",
-        answers:[
-            {text:"Pirates of the Caribbean", correct: true},
-            {text: "The Game of Thrones", correct: false},
-            {text:"Dunkirk", correct: false},
-            {text:"Arrival", correct:false}
-        ]
-    },
-    {
-        questionSRC:"./sondtrack/titanic.mp3",
-        type: "sound",
-        answers:[
-            {text: "Logan", correct: false},
-            {text:"Argo", correct: false},
-            {text:"The Titanic", correct: true},
-            {text:"La La Land", correct:false}
-        ]
-    },
-    {
-        questionSRC:"./sondtrack/XFiles.mp3",
-        type: "sound",
-        answers:[
-            {text: "The X-Files", correct: true},
-            {text:"Alien", correct: false},
-            {text:"Coco", correct: false},
-            {text:"Casablanca", correct:false}
-        ]
-    }   
+    // {
+    //     question:`"Hasta la vista, baby."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"The Godfather", correct: false},
+    //         {text:"Instructions Not Included", correct: false},
+    //         {text:"Terminator 2: Judgment Day", correct: true},
+    //         {text:"The Fast and the Furious", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:`"Houston, we have a problem."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"Ad Astra", correct: false},
+    //         {text:" Apollo 13", correct: true},
+    //         {text:"Interstellar", correct: false},
+    //         {text:"The Martian", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:`“It's alive! It's alive!”`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"Van Helsing", correct: false},
+    //         {text:"Frankenstein", correct: true},
+    //         {text:"Zombieland", correct: false},
+    //         {text:"28 Weeks Later", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:`“May the Force be with you.”`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"the Gladiator", correct: false},
+    //         {text:"Star Wars", correct: true},
+    //         {text:"Star Treck", correct: false},
+    //         {text:"Train to Busan", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:` "I'm having an old friend for dinner."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"The Silence of the Lambs", correct: true},
+    //         {text:"Gravity", correct: false},
+    //         {text:"Birdman", correct: false},
+    //         {text:"Into the Woods", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:`"Keep your friends close, but your enemies closer."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"The Godfather, Part II", correct: true},
+    //         {text:"The Godfather, Part I", correct: false},
+    //         {text:"Inglourious Basterds", correct: false},
+    //         {text:"Up in the Air", correct: false},
+    //     ]
+    // },
+    // {
+    //     question:`"Frankly, my dear, I don't give a damn."`,
+    //     type: "text",
+    //     answers: [
+    //         {text:"Gone With the Wind", correct: true},
+    //         {text:"The Godfather, Part I", correct: false},
+    //         {text:"Scarface", correct: false},
+    //         {text:"Sherlock Holmes", correct: false},
+    //     ]
+    // },
+    // {
+    //     questionSRC:"./sondtrack/jamesbond.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text:"James Bond", correct: true},
+    //         {text:"A Star is Born", correct: false},
+    //         {text:"Knives Out", correct: false},
+    //         {text:"Mission:Impossible", correct:false}
+    //     ]
+    // },
+    // {
+    //     questionSRC:"./sondtrack/piratesofthecaribbean.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text:"Pirates of the Caribbean", correct: true},
+    //         {text: "The Game of Thrones", correct: false},
+    //         {text:"Dunkirk", correct: false},
+    //         {text:"Arrival", correct:false}
+    //     ]
+    // },
+    // {
+    //     questionSRC:"./sondtrack/titanic.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text: "Logan", correct: false},
+    //         {text:"Argo", correct: false},
+    //         {text:"The Titanic", correct: true},
+    //         {text:"La La Land", correct:false}
+    //     ]
+    // },
+    // {
+    //     questionSRC:"./sondtrack/XFiles.mp3",
+    //     type: "sound",
+    //     answers:[
+    //         {text: "The X-Files", correct: true},
+    //         {text:"Alien", correct: false},
+    //         {text:"Coco", correct: false},
+    //         {text:"Casablanca", correct:false}
+    //     ]
+    // }   
 ];
+
 
 
 let newQuiz = new Quiz(questions)
